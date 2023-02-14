@@ -1,4 +1,4 @@
-package com.labs.javalabs;
+package com.labs.javalabs.cylinder;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 
 @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 public class CylinderNumberBoundsException extends RuntimeException {
-    private Logger logger = LogManager.getLogger(LogBuilder.class);
+    private static final Logger logger = LogManager.getLogger(LogBuilder.class);
 
     public CylinderNumberBoundsException() {
         super();
