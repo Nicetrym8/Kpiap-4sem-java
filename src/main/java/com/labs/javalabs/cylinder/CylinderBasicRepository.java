@@ -9,12 +9,14 @@ public class CylinderBasicRepository implements CylinderRepository {
     @Cacheable("volumes")
     public Cylinder getByInputValues(double radius, double height) {
         // Slow down server
-        try {
-            long time = 3000L;
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            throw new IllegalStateException(e);
-        }
+        /*
+         * try {
+         * long time = 3000L;
+         * Thread.sleep(time);
+         * } catch (InterruptedException e) {
+         * throw new IllegalStateException(e);
+         * }
+         */
         return new Cylinder(radius, height);
     }
 }
