@@ -3,11 +3,16 @@ package com.labs.javalabs.cylinder;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 @Component
-public class CylinderBasicRepository implements CylinderRepository {
-    @Override
+public class CylinderBasicRepository {
+    private static final Logger logger = LogManager.getLogger(Cylinder.class);
+
     @Cacheable("volumes")
-    public Cylinder getByInputValues(double radius, double height) {
+    public Cylinder getByInputValues(CylinderRequestParams params) {
+
         // Slow down server
         /*
          * try {
@@ -17,6 +22,7 @@ public class CylinderBasicRepository implements CylinderRepository {
          * throw new IllegalStateException(e);
          * }
          */
-        return new Cylinder(radius, height);
+        logger.info("Cylinder value cached");
+        return params.getCylinder();
     }
 }
