@@ -1,6 +1,9 @@
-package com.labs.javalabs.cylinder;
+package com.labs.javalabs.models.cylinder;
 
 import org.apache.logging.log4j.Logger;
+
+import com.labs.javalabs.endpoints.cylinder.CylinderNumberBoundsException;
+
 import org.apache.logging.log4j.LogManager;
 
 public record Cylinder(double volume) {

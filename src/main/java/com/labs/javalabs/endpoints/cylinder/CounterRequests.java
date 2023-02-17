@@ -1,4 +1,4 @@
-package com.labs.javalabs.counter;
+package com.labs.javalabs.endpoints.cylinder;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

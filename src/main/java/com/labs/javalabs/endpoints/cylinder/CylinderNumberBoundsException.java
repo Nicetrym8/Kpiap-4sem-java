@@ -1,4 +1,4 @@
-package com.labs.javalabs.cylinder;
+package com.labs.javalabs.endpoints.cylinder;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,4 +1,4 @@
-package com.labs.javalabs.cylinder;
+package com.labs.javalabs.endpoints.cylinder;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,11 +7,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.labs.javalabs.models.cylinder.Cylinder;
+import com.labs.javalabs.models.cylinder.CylinderBulkResponse;
+import com.labs.javalabs.models.cylinder.CylinderRequestParams;
+import com.labs.javalabs.models.cylinder.StatsMapper;
+
 import org.springframework.http.HttpStatus;
 
-import com.labs.javalabs.counter.CounterRequests;
-
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 @RestController
@@ -36,12 +41,17 @@ public class CylinderController {
     @PostMapping("/cylinder")
     public ResponseEntity<?> cylinderBulk(@RequestBody List<CylinderRequestParams> body) {
         counter.increment();
-        List<Cylinder> result = new ArrayList<>();
+        List<Cylinder> calculations = new ArrayList<>();
         body.forEach((el) -> {
-            result.add(repository.getByInputValues(el));
+            calculations.add(repository.getByInputValues(el));
         });
+        StatsMapper stats = new StatsMapper(calculations.stream()
+                .map((x) -> x.volume())
+                .collect(DoubleSummaryStatistics::new,
+                        DoubleSummaryStatistics::accept,
+                        DoubleSummaryStatistics::combine));
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(new CylinderBulkResponse(stats, calculations), HttpStatus.OK);
     }
 
 }

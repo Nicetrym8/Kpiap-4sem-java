@@ -1,4 +1,4 @@
-package com.labs.javalabs.cylinder;
+package com.labs.javalabs.models.cylinder;
 
 public record CylinderRequestParams(double radius, double height) {
 
