@@ -46,7 +46,8 @@ public class CylinderController {
         body.forEach((el) -> {
             calculations.add(repository.getByInputValues(el));
         });
-        StatsMapper stats = new StatsMapper(calculations.stream()
+        StatsMapper stats = new StatsMapper(calculations
+                .stream()
                 .map((x) -> x.volume())
                 .collect(DoubleSummaryStatistics::new,
                         DoubleSummaryStatistics::accept,
