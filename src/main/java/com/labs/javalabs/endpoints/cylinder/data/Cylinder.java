@@ -1,4 +1,4 @@
-package com.labs.javalabs.models.cylinder;
+package com.labs.javalabs.endpoints.cylinder.data;
 
 import org.apache.logging.log4j.Logger;
 

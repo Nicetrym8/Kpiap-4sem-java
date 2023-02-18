@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.labs.javalabs.models.cylinder.Cylinder;
-import com.labs.javalabs.models.cylinder.CylinderBulkResponse;
-import com.labs.javalabs.models.cylinder.CylinderRequestParams;
-import com.labs.javalabs.models.cylinder.StatsMapper;
+import com.labs.javalabs.endpoints.cylinder.data.CounterRequests;
+import com.labs.javalabs.endpoints.cylinder.data.Cylinder;
+import com.labs.javalabs.endpoints.cylinder.data.CylinderBulkResponse;
+import com.labs.javalabs.endpoints.cylinder.data.CylinderRequestParams;
+import com.labs.javalabs.endpoints.cylinder.data.StatsMapper;
 
 import org.springframework.http.HttpStatus;
 

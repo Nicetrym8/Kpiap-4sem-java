@@ -3,8 +3,8 @@ package com.labs.javalabs.endpoints.cylinder;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
-import com.labs.javalabs.models.cylinder.Cylinder;
-import com.labs.javalabs.models.cylinder.CylinderRequestParams;
+import com.labs.javalabs.endpoints.cylinder.data.Cylinder;
+import com.labs.javalabs.endpoints.cylinder.data.CylinderRequestParams;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
