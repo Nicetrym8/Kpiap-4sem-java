@@ -5,18 +5,20 @@ import org.springframework.stereotype.Service;
 
 import com.labs.javalabs.endpoints.cylinder.data.Cylinder;
 import com.labs.javalabs.endpoints.cylinder.data.CylinderRequestParams;
+
 import com.labs.javalabs.models.cylinder.CylinderEntity;
 import com.labs.javalabs.models.cylinder.CylinderEntityRepository;
 
 import org.apache.logging.log4j.Logger;
+
 import org.apache.logging.log4j.LogManager;
 
 @Service
-public class CylinderBasicRepository {
-    private static final Logger logger = LogManager.getLogger(CylinderBasicRepository.class);
+public class CylinderBasicService {
+    private static final Logger logger = LogManager.getLogger(CylinderBasicService.class);
     private final CylinderEntityRepository repository;
 
-    public CylinderBasicRepository(CylinderEntityRepository repository) {
+    public CylinderBasicService(CylinderEntityRepository repository) {
         this.repository = repository;
     }
 
@@ -33,6 +35,7 @@ public class CylinderBasicRepository {
          * throw new IllegalStateException(e);
          * }
          */
+        logger.info(String.format("Request params: height=%f radius=%f", params.height(), params.radius()));
         var cylinderEntity = repository.findEntityByHeightAndRadius(params.height(), params.radius());
         if (cylinderEntity == null) {
             cylinderEntity = new CylinderEntity(params);
@@ -41,6 +44,5 @@ public class CylinderBasicRepository {
         }
         logger.info("Cylinder value cached");
         return new Cylinder(cylinderEntity);
-
     }
 }

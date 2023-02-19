@@ -16,11 +16,11 @@ public class CounterRequests {
         counter = new AtomicInteger(0);
     }
 
-    public synchronized void increment() {
+    public void increment() {
         logger.info(String.format("Total requests: %d", counter.incrementAndGet()));
     }
 
-    public synchronized int counter() {
+    public int counter() {
         return counter.get();
     }
 }

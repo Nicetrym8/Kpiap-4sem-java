@@ -49,4 +49,8 @@ public class CylinderEntity {
         return this.height;
     }
 
+    public long id() {
+        return id;
+    }
+
 }
