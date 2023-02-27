@@ -16,7 +16,7 @@ Spring (Spring Boot)/maven/gradle/Jersey/ Spring MVC. 2. Добавить GET е
 1. Добавить простейший кэш в виде in-memory Map для сервиса. Map должна содержаться в
 отдельном бине/классе, который должен добавляться в основной сервис с помощью
 dependency injection механизм Spring.
-## Concurrency (task4) <a href="https://github.com/Nicetrym8/Kpiap-4sem-java/tree/b68437411a5a47a5f1863929a6d816f9cfdd5df4">(task4)</a>
+## Concurrency  <a href="https://github.com/Nicetrym8/Kpiap-4sem-java/tree/b68437411a5a47a5f1863929a6d816f9cfdd5df4">(task4)</a>
 1. Добавить сервис для подсчёта обращений к основному сервису. Счётчик должен быть
 реализован в виде отдельного класса, доступ к которому должен быть синхронизирован. 2.
 Используя jmeter/postman или любые другие средвста сконфигурировать нагрузочный тест
