@@ -11,21 +11,21 @@ public class CylinderNumberBoundsException extends RuntimeException {
 
     public CylinderNumberBoundsException() {
         super();
-        logger.warn("Internal Server Error");
+        logger.error("Internal Server Error");
     }
 
     public CylinderNumberBoundsException(String message, Throwable cause) {
         super(message, cause);
-        logger.warn(message);
+        logger.error(message);
     }
 
     public CylinderNumberBoundsException(String message) {
         super(message);
-        logger.warn(message);
+        logger.error(message);
     }
 
     public CylinderNumberBoundsException(Throwable cause) {
         super(cause);
-        logger.warn(cause.getMessage());
+        logger.error(cause.getMessage());
     }
 }
