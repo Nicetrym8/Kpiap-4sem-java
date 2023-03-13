@@ -32,7 +32,7 @@ dependency injection механизм Spring.
 ## Data persistence <a href="https://github.com/Nicetrym8/Kpiap-4sem-java/tree/695ed6c5f7a45de44108023c8ebc52038b53662e">(task7)</a>
 1. Добавить возможность сохранения всех результатов вычислений в базе данных или
 файле, используя стандартные persistence фреймворки Java (Spring Data/Hibernate/MyBatis)
-## Asynchronous calls <a href="https://github.com/Nicetrym8/Kpiap-4sem-java/tree/0b541462eb1421317648ac57f4050497e5b61533">(task8)</a>
+## Asynchronous calls <a href="https://github.com/Nicetrym8/Kpiap-4sem-java/tree/5d8e74e4bf44c7ba6d353dd68105c379af74d217">(task8)</a>
 1. Добавить возможность асинхронного вызова сервиса используя future, возвращать статус
 вызова REST сервиса не дожидаясь результатов подсчётов. Результаты подсчётов должны
 быть представлены в БД по предопределённой ID
