@@ -24,17 +24,6 @@ public class CylinderBasicService {
 
     @Cacheable("volumes")
     public Cylinder getByInputValues(CylinderRequestParams params) {
-
-        // Slow down server
-
-        /*
-         * try {
-         * long time = 3000L;
-         * Thread.sleep(time);
-         * } catch (InterruptedException e) {
-         * throw new IllegalStateException(e);
-         * }
-         */
         logger.info(String.format("Request params: height=%f radius=%f", params.height(), params.radius()));
         var cylinderEntity = repository.findEntityByHeightAndRadius(params.height(), params.radius());
         if (cylinderEntity == null) {
