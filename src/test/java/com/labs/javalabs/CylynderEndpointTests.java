@@ -1,5 +1,6 @@
 package com.labs.javalabs;
 
+import org.antlr.v4.runtime.misc.Pair;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.containsString;
-import java.util.Random;
+
+import java.util.List;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 class CylinderEndpointTests {
-
-    private final Random random = new Random();
 
     @Autowired
     private MockMvc mockMvc;
@@ -31,26 +31,27 @@ class CylinderEndpointTests {
 
     @Test
     public void cylinderShouldReturnMessage() throws Exception {
-        double radius = random.nextDouble();
-        double height = random.nextDouble();
-        this.mockMvc.perform(get("/cylinder?height=" + height + "&radius=" + radius))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"volume\":" + (Math.PI * radius * radius * height))));
+        final List<Pair<Double, Double>> testNumbersList = List.of(
+                new Pair<Double, Double>(22.4, 34.),
+                new Pair<Double, Double>(11.3, 1.7),
+                new Pair<Double, Double>(8.2, 3.4));
+        for (var testNumbersPair : testNumbersList) {
+            this.mockMvc.perform(get("/cylinder?height=" + testNumbersPair.a + "&radius=" + testNumbersPair.b))
+                    .andDo(print())
+                    .andExpect(status().isOk())
+                    .andExpect(content().string(containsString(
+                            "\"volume\":" + (Math.PI * testNumbersPair.b * testNumbersPair.b * testNumbersPair.a))));
+        }
+
     }
 
     @Test
     public void cylinderShouldReturnStatus400() throws Exception {
-        int leftLimit = 97;
-        int rightLimit = 122;
-        int targetStringLength = 10;
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
-                .limit(targetStringLength)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
-
-        this.mockMvc.perform(get("/cylinder?height=" + generatedString + "&radius=" + generatedString)).andDo(print())
-                .andExpect(status().isBadRequest());
+        final List<String> testStringsList = List.of("foo", "bar", "baz", "etc");
+        for (var testString : testStringsList) {
+            this.mockMvc.perform(get("/cylinder?height=" + testString + "&radius=" + testString)).andDo(print())
+                    .andExpect(status().isBadRequest());
+        }
     }
 
     @Test
